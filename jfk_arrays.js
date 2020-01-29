@@ -34,4 +34,36 @@ dinosaurs[13] = 'Philosoraptor'
 console.log(dinosaurs[13])
 dinosaurs[10] = 3
 dinosaurs[11] = ['Pterosaur','Stegosaurus',3627.5]
+
+console.log(dinosaurs[11])
+console.log(dinosaurs[11][1])
+
+dinosaurs.push("Cat")
+
+dinosaurs[12] = ['Yako','Wako','Dot']
 console.log(dinosaurs)
+console.log(dinosaurs.length)
+
+var favouredVariable = dinosaurs.pop();
+// console.log("They pushed me, how you like me now? " + favouredVariable);
+dinosaurs.unshift(favouredVariable);
+console.log("Here are the dinosaurs: " + dinosaurs)
+
+var domesticAnimals = [];
+domesticAnimals.unshift(dinosaurs.shift());
+
+console.log(dinosaurs)
+domesticAnimals.push("Oscar");
+domesticAnimals.push("Bugz");
+domesticAnimals.push("Dusty");
+domesticAnimals.push("Arthur");
+
+console.log("Here are the domesticAnimals: " + domesticAnimals + "\n")
+
+var bothGroups = dinosaurs.concat(domesticAnimals);
+
+console.log("Here's both groups concatenated: ")
+
+for (var i = 0; i < bothGroups.length; i++) {
+  console.log(bothGroups[i]);
+}

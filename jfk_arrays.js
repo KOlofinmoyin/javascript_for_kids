@@ -87,3 +87,6 @@ var animalBodyPart = animalBodyParts[Math.floor(Math.random() * animalBodyParts.
 
 var randomInsults = ["Your",randomBodyPart,"is","more",randomAdjective,"than a",domesticAnimal+"'s",animalBodyPart]
 console.log(randomInsults.join(" "));
+
+var Arthur = {"legs":3,"name":"Arthur", "color":"white"}
+console.log(Arthur);

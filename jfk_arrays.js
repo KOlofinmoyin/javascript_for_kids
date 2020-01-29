@@ -1,17 +1,3 @@
-var dinosaur1 = "T-Rex";
-var dinosaur2 = "Velociraptor";
-var dinosaur3 = "Stegosaurus";
-var dinosaur4 = "Triceratops";
-var dinosaur5 = "Brachiosaurus";
-var dinosaur6 = "Pteranodon";
-var dinosaur7 = "Apatosaurus";
-var dinosaur8 = "Diplodocus";
-var dinosaur9 = "Compsognathus";
-
-for (var i = 1; i <= 9; i++) {
-  var dinosaur;
-  console.log(dinosaur+i);
-}
 
 var dinosaurs = ["T-Rex",
                   "Velociraptor",
@@ -67,3 +53,8 @@ console.log("Here's both groups concatenated: ")
 for (var i = 0; i < bothGroups.length; i++) {
   console.log(bothGroups[i]);
 }
+
+console.log(bothGroups.indexOf(3));
+
+
+console.log(bothGroups.join(" * "));

@@ -44,6 +44,8 @@ domesticAnimals.push("Bugz");
 domesticAnimals.push("Dusty");
 domesticAnimals.push("Arthur");
 
+var domesticAnimal = domesticAnimals[Math.floor(Math.random() * domesticAnimals.length)]
+
 console.log("Here are the domesticAnimals: " + domesticAnimals + "\n")
 
 var bothGroups = dinosaurs.concat(domesticAnimals);
@@ -58,3 +60,30 @@ console.log(bothGroups.indexOf(3));
 
 
 console.log(bothGroups.join(" * "));
+
+var randomWords = ['Explosion', 'Cave', 'Princess', 'Pen'];
+
+var randomNumber = Math.floor(Math.random(1)*randomWords.length);
+
+console.log(randomWords[randomNumber]);
+
+var phrases = ['That sounds good', 'Yes, you should definitely do that', "I'm not sure that's a great idea", "Maybe not today?", "Computer says no."]
+var randomNumber2 = Math.floor(Math.random(1)*phrases.length);
+console.log(phrases[randomNumber2]);
+
+var randomBodyParts = ["Face", "Nose", "Hair"];
+var randomBodyPart = randomBodyParts[Math.floor(Math.random() * randomBodyParts.length)];
+
+var randomAdjectives = ["Smelly", "Boring", "Stupid"];
+var randomAdjective = randomAdjectives[Math.floor(Math.random(1) * randomAdjectives.length)];
+
+var randomWords = ["Fly", "Marmot", "Stick", "Monkey", "Rat"];
+var randomWord = randomWords[Math.floor(Math.random(1) * randomWords.length)];
+
+console.log(`Your ${randomBodyPart} is like a ${randomAdjective} ${randomWord}.`);
+
+var animalBodyParts = ["tail", "claws", "wing", "beak", "fur", "fins", "shell", "feathers"]
+var animalBodyPart = animalBodyParts[Math.floor(Math.random() * animalBodyParts.length)];
+
+var randomInsults = ["Your",randomBodyPart,"is","more",randomAdjective,"than a",domesticAnimal+"'s",animalBodyPart]
+console.log(randomInsults.join(" "));

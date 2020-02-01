@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Hangman game: </h1>
+    <h3><div id="name"></div></h3>
+    <h3><div id="likeCats"></div></h3>
+    <script type="text/javascript">
+      var name = window.prompt("What's your name?");
+       name === "null" ? document.getElementById("name").innerText = "Hello Stranger!" : document.getElementById("name").innerText = `Hello ${name}`
+       var likeCats = confirm("Do you like cats?");
+       document.getElementById("likeCats").innerText = `Dyou like cats? ${likeCats ? 'Yes' : 'No'}`
+    </script>
+  </body>
+</html>

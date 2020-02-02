@@ -8,53 +8,51 @@
     <h1>Hangman game: </h1>
     <h3><div id="name"></div></h3>
     <h3><div id="likeCats"></div></h3>
-    <h3><div id="randomWord"></div></h3>
-    <h3><div id="guessedWord"></div></h3>
-    <h3><div id="answeredWord"></div></h3>
+    <h3><div id="word"></div></h3>
+    <h3><div id="guess"></div></h3>
+    <h1><div id="answer"></div></h1>
 
     <script type="text/javascript">
       var name = window.prompt("What's your name?");
        name === "null" ? document.getElementById("name").innerText = "Hello Stranger!" : document.getElementById("name").innerText = `Hello ${name}`
+
        var likeCats = confirm("Do you like cats?");
        document.getElementById("likeCats").innerText = `Dyou like cats? ${likeCats ? 'Yes' : 'No'}`
-       alert("Is everything okay?")
 
-       var randomWords = ["Teacher", "Crocodile", "Javascript", "Monkey", "Pancake"]
-       var randomWord = randomWords[Math.floor(Math.random() * randomWords.length)]
-
-       var answeredWord = 0;
-
+       var words = ["javascript", "peacock", "elephant", "mouse", "lion", "hippopotamus", "ruby"]
+       var word = words[Math.floor(Math.random() * words.length)]
        var answer = []
-       for(var i=0; i < randomWord.length; i++){
-         answer[i] = "_"
+
+       var remainingWords = word.length
+
+       for (var i = 0; i < word.length; i++) {
+         answer[i] = " _ ";
        }
 
-       var remainingLetters = randomWord.length
+       while (remainingWords > 0) {
+         alert(`Your progress so far is: ${answer.join("")}`)
+         var guess = prompt(`Enter your guess letter:`)
 
-       while(remainingLetters > 0){
-
-         document.getElementById("answeredWord").innerText = `The random word is: ${answer.join(" _ ")}`
-         alert(`The random word is: ${answer.join(" _ ")}`)
-
-         var guessedWord = window.prompt("Enter the word:")
-         document.getElementById("guessedWord").innerText = `Your guess is: ${guessedWord}`
-
-         document.getElementById("randomWord").innerText = `The random word is: ${randomWord}`
-
-         if(guessedWord === null){
-           break;
-         }elseif{
-           guessedWord.length !== 1
-           alert("Please enter a single character.")
-         }else{
-           for(var j=0; j < randomWord.length; j++)
-           if(randomWord[j] === guessedWord){
-             answer[j] = guessedWord
-             remainingLetters--
+         if (guess === null) {
+            break;
+         }else if (guess.length !== 1) {
+           alert("Please enter a single letter/ character")
+         }else {
+           for (var j = 0; j < word.length; j++) {
+             if (word[j] === guess) {
+               answer[j] = guess
+              remainingWords--
+             }
            }
          }
        }
-
+       if (answer === word) {
+          document.getElementById("answer").innerText = `Congratulations!!! Your guess was right: ${answer.join("")}`
+          document.getElementById("word").innerText = `The random word is: ${word}`
+       }else {
+        document.getElementById("guess").innerText = `Better luck next time.`
+        document.getElementById("word").innerText = `The random word is: ${word}`
+       }
 
     </script>
   </body>

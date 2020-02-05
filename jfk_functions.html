@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Functions</title>
+  </head>
+  <body>
+    <h1>Practicing Functions</h1>
+    <i>Use (F12) to open the Developer toolbar, if you want to see the values returned .</i>
+
+    <h1><div id="faces"></div></h1>
+
+    <script type="text/javascript">
+      var Hello = function (){
+        alert("Hello from method spling()!")
+      }
+
+      var numTime=0;
+      var printCatFace = function (numTime){
+        for(var i=0; i < numTime; i++){
+          console.log(i + "=^.^=")
+        }
+      }
+
+      var printMultipleTimes = function (numTimes,whatToPrint){
+        for(var j=0; j < numTimes; j++){
+          console.log(j + whatToPrint)
+        }
+      }
+
+      var double = function(number){
+        return number * 2;
+      }
+
+      var randomWords = ["Planet", "Worm", "Flower", "Computer"]
+
+      var pickRandomWord = function (words){
+          return words[Math.floor(Math.random() * words.length)]
+      }
+
+      var generateRandomInsult = function (){
+        var randomBodyPart = ["Face", "Nose", "Hair"]
+        var randomAdjective = ["Smelly", "Boring", "Stupid"]
+        var randomWordss = ["Fly","Marmot","Monkey","Rat"]
+        var randomString = "Your " + pickRandomWord(randomBodyPart) + " is like a " + pickRandomWord(randomAdjective)+ " " + pickRandomWord(randomWordss)+"!!!"
+        return console.log(randomString)
+      }
+
+
+      <!--Where the functions are called -->
+      Hello()
+      printCatFace(5)
+      printMultipleTimes(5, " ^_^ ")
+      printMultipleTimes(5, " >_<")
+      double(8)
+      pickRandomWord(randomWords)
+      pickRandomWord(["Face","April","Plane","Prance"])
+      generateRandomInsult()
+
+    </script>
+  </body>
+</html>

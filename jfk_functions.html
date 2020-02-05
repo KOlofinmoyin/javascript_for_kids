@@ -11,10 +11,12 @@
     <h1><div id="faces"></div></h1>
 
     <script type="text/javascript">
+      <!-- Prints the message from spling i.e. when called -->
       var Hello = function (){
         alert("Hello from method spling()!")
       }
 
+      <!-- Simply prints a Cats face according to the for loop. -->
       var numTime=0;
       var printCatFace = function (numTime){
         for(var i=0; i < numTime; i++){
@@ -22,22 +24,26 @@
         }
       }
 
+      <!-- Accepts 2 arguments and returns the second argument accordingly -->
       var printMultipleTimes = function (numTimes,whatToPrint){
         for(var j=0; j < numTimes; j++){
           console.log(j + whatToPrint)
         }
       }
 
+      <!-- Returns number * 2 -->
       var double = function(number){
         return number * 2;
       }
 
       var randomWords = ["Planet", "Worm", "Flower", "Computer"]
 
+      <!-- Accepts an array and returns a random string element from the array based on its index. -->
       var pickRandomWord = function (words){
           return words[Math.floor(Math.random() * words.length)]
       }
 
+      <!-- Random insult generator consolidated as a function -->
       var generateRandomInsult = function (){
         var randomBodyPart = ["Face", "Nose", "Hair"]
         var randomAdjective = ["Smelly", "Boring", "Stupid"]
@@ -46,6 +52,47 @@
         return console.log(randomString)
       }
 
+      <!-- YAGNI: the function should be obvious by now Buster -->
+      var fifthLetter = function (name){
+        if(name.length < 5){
+          console.log(`Oga, abeg that name get K-leg!`)
+          return
+        }
+        console.log(`The fifth character of your name is: ${name[4]}`)
+      }
+
+      var medalForScore = function(score){
+        if(score <=3){
+          return console.log("bronze medal")
+        }
+        if(score <7){
+          return console.log("silver medal")
+        }
+        return console.log("gold")
+      }
+
+      var add = function(num1,num2){
+        return console.log(num1 + num2)
+      }
+
+      var multiply = function(num1,num2){
+        return console.log(num1 * num2)
+      }
+
+      function areArraysSame(array1,array2){
+        if(array1.length !== array2.length){
+          console.log("The lengths aren't the same! ")
+          return
+        }
+
+        for(var i=0; i < array1.length; i++){
+          if(array1[i] == array2[i]){
+            return console.log("They're equal")
+          }
+            return console.log("false")
+        }
+
+      }
 
       <!--Where the functions are called -->
       Hello()
@@ -56,7 +103,19 @@
       pickRandomWord(randomWords)
       pickRandomWord(["Face","April","Plane","Prance"])
       generateRandomInsult()
-
+      fifthLetter("Kehinde")
+      fifthLetter("Jane")
+      medalForScore(3)
+      medalForScore(4)
+      medalForScore(7)
+      medalForScore(8)
+      add(5,9)
+      multiply(9,5)
+      add(multiply(36325,9824),777)
+      areArraysSame([1,2,3],[1,2,3])
+      areArraysSame([1,2,3],[2,3,1])
+      areArraysSame([1,2,3],[4,5,6])
+      areArraysSame([1,2,3],[1,2,3,4])
     </script>
   </body>
 </html>

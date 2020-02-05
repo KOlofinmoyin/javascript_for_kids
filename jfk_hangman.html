@@ -1,59 +1,63 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Hangman</title>
-  </head>
-  <body>
-    <h1>Hangman game: </h1>
-    <h3><div id="name"></div></h3>
-    <h3><div id="likeCats"></div></h3>
-    <h3><div id="word"></div></h3>
-    <h3><div id="guess"></div></h3>
-    <h1><div id="answer"></div></h1>
+<head>
+  <meta charset="utf-8">
+  <title>Hangman</title>
+</head>
+<body>
+  <h1>Hangman game: </h1>
+  <h3><div id="name"></div></h3>
+  <h3><div id="likeCats"></div></h3>
+  <h3><div id="word"></div></h3>
+  <h3><div id="message"></div></h3>
+  <h1><div id="answer"></div></h1>
 
-    <script type="text/javascript">
-      var name = window.prompt("What's your name?");
-       name === "null" ? document.getElementById("name").innerText = "Hello Stranger!" : document.getElementById("name").innerText = `Hello ${name}`
+  <script type="text/javascript">
+  var name = window.prompt("What's your name?");
+  name === "null" ? document.getElementById("name").innerText = "Hello Stranger!" : document.getElementById("name").innerText = `Hello ${name}`
 
-       var likeCats = confirm("Do you like cats?");
-       document.getElementById("likeCats").innerText = `Dyou like cats? ${likeCats ? 'Yes' : 'No'}`
+  var likeCats = confirm("Do you like cats?");
+  document.getElementById("likeCats").innerText = `Dyou like cats? ${likeCats ? 'Yes' : 'No'}`
 
-       var words = ["javascript", "peacock", "elephant", "mouse", "lion", "hippopotamus", "ruby"]
-       var word = words[Math.floor(Math.random() * words.length)]
-       var answer = []
+  var words = ["javascript", "peacock", "elephant", "mouse", "lion", "hippopotamus", "ruby"]
+  var word = words[Math.floor(Math.random() * words.length)]
+  var answer = []
 
-       var remainingWords = word.length
+  var remainingLetters = word.length
+  var remainingGuesses = (word.length) + 3
 
-       for (var i = 0; i < word.length; i++) {
-         answer[i] = " _ ";
-       }
+  for (var i = 0; i < word.length; i++) {
+    answer[i] = " _ ";
+  }
 
-       while (remainingWords > 0) {
-         alert(`Your progress so far is: ${answer.join("")}`)
-         var guess = prompt(`Enter your guess letter:`)
+  while (remainingLetters > 0 && remainingGuesses > 0) {
+    alert(`Your progress so far is: ${answer.join("")}. \nYou have ${remainingLetters} letters left to guess.`)
+    var guess = prompt(`Enter your guess letter:`).toLowerCase()
 
-         if (guess === null) {
-            break;
-         }else if (guess.length !== 1) {
-           alert("Please enter a single letter/ character")
-         }else {
-           for (var j = 0; j < word.length; j++) {
-             if (word[j] === guess) {
-               answer[j] = guess
-              remainingWords--
-             }
-           }
-         }
-       }
-       if (answer) {
-          document.getElementById("answer").innerText = `Congratulations!!! Your guess was right: ${answer.join("")}`
-          document.getElementById("word").innerText = `The random word is: ${word}`
-       }else {
-        document.getElementById("guess").innerText = `Better luck next time.`
-        document.getElementById("word").innerText = `The random word is: ${word}`
-       }
+    if (guess === null) {
+      break;
+    }else if (guess.length !== 1) {
+      alert("Please enter a single letter/ character")
+    }else {
 
-    </script>
-  </body>
+      remainingGuesses--
+
+      for (var j = 0; j < word.length; j++) {
+
+        if(word[j] === guess && answer[j] === " _ ") {
+            answer[j] = guess
+            remainingLetters--
+        }
+      }
+    }
+  }
+
+  if (answer.join("") === word) {
+    document.getElementById("answer").innerText = `Congratulations!!! Your guess was right: ${answer.join("")}`
+  }else {
+    document.getElementById("message").innerText = `Better luck next time.`
+  }
+  document.getElementById("word").innerText = `The random word is: ${word}`
+  </script>
+</body>
 </html>

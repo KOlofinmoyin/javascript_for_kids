@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>DOM & JQuery exercise. </title>
+  </head>
+  <body>
+    <h1 id="main-heading">Hello world!</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script type="text/javascript">
+      var newHeading = prompt("Enter a new heading: ");
+      $("#main-heading").text(newHeading)
+      $("body").append("<h2><p>This is a new paragraph!</p></h2>")
+
+      for(var i=0;i<3;i++){
+        var hobby = prompt("Tell me one of your hobbies: ")
+        $("body").append("<h3><p>"+hobby+"</p></h3>")
+      }
+
+      $("h1").hide(200)
+      $("h1").show(200)
+      $("p").append("Hickory dickory duck!!!")
+
+      var friends = ["James","Fisola","Felix","Emmanuel","Victor"]
+
+      for (var i = 0; i < friends.length; i++) {
+          $("body").hide(1000).append("<h3><p>"+friends[i]+"</p></h3>").fadeIn(1000)
+      }
+
+      for (var i = 0; i < 5; i++) {
+        $("h1").text("My friends").fadeOut(i+000).fadeIn(i+000).delay(5000)
+      }
+
+      $("p").append(" smells")
+
+      $("h1").fadeTo(2000,0.2)
+
+    </script>
+  </body>
+</html>

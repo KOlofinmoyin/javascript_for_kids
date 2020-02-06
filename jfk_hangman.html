@@ -19,20 +19,54 @@
   var likeCats = confirm("Do you like cats?");
   document.getElementById("likeCats").innerText = `Dyou like cats? ${likeCats ? 'Yes' : 'No'}`
 
-  var words = ["javascript", "peacock", "elephant", "mouse", "lion", "hippopotamus", "ruby"]
-  var word = words[Math.floor(Math.random() * words.length)]
-  var answer = []
+  function pickWord(){
+    words = ["javascript", "peacock", "elephant", "mouse", "lion", "hippopotamus", "ruby"]
+    return words[Math.floor(Math.random() * words.length)]
+  }
+
+  function setUpAnswerArray(word){
+    for (var i = 0; i < word.length; i++) {
+      word[i] = " _ ";
+    }
+  }
+
+  function showPlayerProgress(answer){
+    alert(`Your progress so far is: ${answer}.`)
+  }
+
+  function getGuess(){
+    return prompt(`Enter your guess letter:`).toLowerCase()
+  }
+
+  function updateGameState(guess,word,answer){
+    for (var j = 0; j < word.length; j++) {
+
+      if(word[j] === guess && answer[j] === " _ ") {
+          answer[j] = guess
+        }
+  }
+}
+
+  function showAnswerAndCongratulatePlayer(answer,word){
+    if (answer.join("") === word) {
+      document.getElementById("answer").innerText = `Congratulations!!! Your guess was right: ${answer.join("")}`
+    }else {
+      document.getElementById("message").innerText = `Better luck next time.`
+    }
+    document.getElementById("word").innerText = `The random word is: ${word}`
+  }
+
+  // functions declared above this point
+
+  var word = pickWord();
+  var answer = setUpAnswerArray(word)
 
   var remainingLetters = word.length
   var remainingGuesses = (word.length) + 3
 
-  for (var i = 0; i < word.length; i++) {
-    answer[i] = " _ ";
-  }
-
   while (remainingLetters > 0 && remainingGuesses > 0) {
-    alert(`Your progress so far is: ${answer.join("")}. \nYou have ${remainingLetters} letters left to guess.`)
-    var guess = prompt(`Enter your guess letter:`).toLowerCase()
+    showPlayerProgress(answer)
+    var guess = getGuess()
 
     if (guess === null) {
       break;
@@ -42,22 +76,12 @@
 
       remainingGuesses--
 
-      for (var j = 0; j < word.length; j++) {
-
-        if(word[j] === guess && answer[j] === " _ ") {
-            answer[j] = guess
-            remainingLetters--
-        }
-      }
+      var correctGuesses = updateGameState(guess,word,answer);
+            remainingLetters -= correctGuesses
     }
   }
 
-  if (answer.join("") === word) {
-    document.getElementById("answer").innerText = `Congratulations!!! Your guess was right: ${answer.join("")}`
-  }else {
-    document.getElementById("message").innerText = `Better luck next time.`
-  }
-  document.getElementById("word").innerText = `The random word is: ${word}`
+  showAnswerAndCongratulatePlayer(answer)
   </script>
 </body>
 </html>

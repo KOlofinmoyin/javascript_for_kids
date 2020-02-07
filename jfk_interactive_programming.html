@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Interactive Javascript</title>
+  </head>
+  <body>
+    <h1>Interactive Programming: delaying functions</h1>
+<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script type="text/javascript">
+      $("h1").fadeOut().fadeIn(5000)
+
+      var timeUp = function(){
+        alert('Alarm: Timeup, time to get out the door!!!')
+      }
+
+      var counter = 1
+      var checkingOnYou = function(){
+        alert('Voyeur: You\'ve been staring at your console for!!! '+counter+ ' second(s)')
+        counter++
+      }
+
+      var timeout = setTimeout(timeUp,6000)
+
+      var setIntervalId = setInterval(checkingOnYou,1000)
+
+      var shouldI2 = confirm("Should I stop the voyeuring?")
+      var shouldI = confirm("Should I cancel the timer?")
+
+      if (shouldI) {
+        clearTimeout(timeout)
+      }
+
+      if (shouldI2) {
+        clearInterval(setIntervalId)
+      }
+    </script>
+  </body>
+</html>

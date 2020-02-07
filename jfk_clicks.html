@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Click events exercise</title>
+  </head>
+  <body>
+    <h1><div id="heading">Hey Hann!!</div></h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var clickHandler = function(event){
+        console.log("Click " + event.pageX + " " + event.pageY)
+      }
+      $("h1").click(clickHandler)
+    </script>
+  </body>
+</html>

@@ -1,68 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Interactive programming</title>
-</head>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>The Interactive h1 text game.</title>
+  </head>
+  <body>
+      <h1><div id="heading">Hello Kyle </div></h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      let offset= 0;
+      let direction = "right";
+      let clicks = 0;
+      let intervalAmount = 120;
 
-<body>
-    <h1 id="heading">Hello world!</h1>
+      $("#heading").offset({left: offset, top: offset});
 
-    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
-
-    <script>
-    var direction = "right";
-    var offset = 0;
-    var intervalLength = 120;
-    var clicks = 0;
-
-    $("#heading").offset({ left: offset, top: offset });
-
-    var moveHeading = function () {
-      if (direction === "right") {
-        $("#heading").offset({ left: offset });
-        offset++;
-        if (offset > 200) {
-          offset = 0;
-          direction = "down";
+      var moveHeading = function(){
+        if (direction === "right") {
+          $("#heading").offset({left: offset});
+          offset++
+          if (offset > 200) {
+            offset = 0
+            direction = "down"
+          }
+        }else if (direction === "down") {
+          $("#heading").offset({top: offset});
+          offset++
+          if (offset > 200) {
+            offset = 200
+            direction = "left"
+          }
+        }else if (direction === "left") {
+          $("#heading").offset({left: offset});
+          offset--
+          if (offset < 0) {
+            offset = 200
+            direction = "up"
+          }
+        }else if (direction === "up") {
+          $("#heading").offset({top: offset});
+          offset--
+          if (offset < 0) {
+            offset = 0
+            direction = "right"
+          }
         }
-      } else if (direction === "down") {
-        $("#heading").offset({ top: offset });
-        offset++;
-        if (offset > 200) {
-          offset = 200;
-          direction = "left";
+      };
+      var intervalId = setInterval(moveHeading,intervalAmount)
+
+      $("#heading").click(function(){
+        clearInterval(intervalId)
+        intervalAmount /=2
+        clicks++
+        if (clicks > 10) {
+          $("#heading").text("Congratulations Kyle you win!!!!")
+        }else {
+          intervalId = setInterval(moveHeading,intervalAmount)
         }
-      } else if (direction === "left") {
-        $("#heading").offset({ left: offset });
-        offset--;
-        if (offset < 0) {
-          offset = 200;
-          direction = "up";
-        }
-      } else if (direction === "up") {
-        $("#heading").offset({ top: offset });
-        offset--;
-        if (offset < 0) {
-          offset = 0;
-          direction = "right";
-        }
-      }
-    };
+      });
 
-    var intervalId = setInterval(moveHeading, intervalLength);
-
-    $("#heading").click(function () {
-      clearInterval(intervalId);
-      intervalLength /= 2;
-      clicks++;
-
-      if (clicks > 10) {
-        $("#heading").text("You Win.");
-      } else {
-        intervalId = setInterval(moveHeading, intervalLength)
-
-      }
-    });
     </script>
-</body>
+  </body>
 </html>

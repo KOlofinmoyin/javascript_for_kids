@@ -12,6 +12,7 @@
       var width = 700;
       var height = 700;
       var clicks = 0;
+      var click_limit = 30;
 
       var getRandomNumber = function(size){
           return Math.floor(Math.random() * size)
@@ -36,6 +37,8 @@
           return "Cold"
         }else if (distance < 320) {
           return "Really Cold"
+        }else if (distance < 400) {
+          return "Really really Cold"
         }else {
           return "Freezing... "
         }
@@ -50,10 +53,18 @@
         clicks++
         var distance = getDistance(event,target)
         var distanceHint = getDistanceHint(distance)
-        $("#distance").text(distanceHint)
+        $("#distance").text(`${distanceHint} + ${click_limit - clicks} clicks left.`)
 
           if (distance < 8) {
             alert(`Good job, you found the treasure in ${clicks} clicks.`)
+          }
+
+          if (clicks > 30) {
+            alert(`GAME OVER!!!`)
+          }
+
+          if (clicks > 30) {
+            clicks = 0
           }
       });
 

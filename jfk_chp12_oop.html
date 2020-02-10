@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Object Oriented Programming.</title>
+  </head>
+  <body>
+    <div id="heading"> <h1>Object Oriented Programming </h1></div>
+    <div id="dog_message"> <h3> </h3></div>
+    <div id="cat_message"> <h3> </h3></div>
+    <div id="pig_message"> <h3> </h3></div>
+    <div id="horse_message"> <h3> </h3></div>
+
+    <div id="general_message"> <h3> </h3></div>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js" type="text/javascript">
+
+    </script>
+    <script type="text/javascript">
+      var dog = {
+        name: "tiddles",
+        legs: 3,
+        isAweSome: true
+      }
+      dog.age = 16
+      $("#dog_message").text(`My Dog's name is: ${dog.name}, He's got ${dog.legs}legs and he's awesome. Tiddles is ${dog.age}years old.`)
+
+      var speak = function(){
+        return `${this.sound} My name is ${this.name} !`;
+      };
+
+      var cat = {
+          name: "Arthur",
+          sound: "Miao",
+          speak: speak
+      };
+
+      var pig = {
+        sound: "Oink",
+        name: "Marie",
+        speak: speak
+      }
+
+      var horse = {
+        sound: "Neigh",
+        name: "Dustie",
+        speak: speak
+      }
+
+      $("#cat_message").text(`My Cat's name is: ${cat.name}, He makes a ${cat.sound} sound. He can actually speak: ${cat.speak()}.`)
+      $("#pig_message").text(`My Pig's name is: ${pig.name}, She makes a ${pig.sound} sound. She can actually speak: ${pig.speak()}.`)
+      $("#horse_message").text(`My Horse's name is: ${horse.name}, He makes a ${horse.sound} sound. He can actually speak: ${horse.speak()}.`)
+
+    </script>
+  </body>
+</html>
